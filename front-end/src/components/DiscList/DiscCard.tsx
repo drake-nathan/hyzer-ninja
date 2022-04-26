@@ -1,4 +1,4 @@
-import { Container } from './Main.styled';
+import { Container } from '../Main.styled';
 
 const DiscCard = () => <Container>DiscCard</Container>;
 

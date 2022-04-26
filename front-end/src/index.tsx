@@ -1,3 +1,4 @@
+import './normalize.css';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
