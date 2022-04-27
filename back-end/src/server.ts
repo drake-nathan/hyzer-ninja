@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/test', (req, res) => res.send('Beers, Beets, Battlestar Gallactica'));
 
-const port = process.env.PORT;
+const port = parseInt(process.env.PORT);
 export const server = http.createServer(app);
 server.listen(port);
 console.log('Server listening on:', port);
