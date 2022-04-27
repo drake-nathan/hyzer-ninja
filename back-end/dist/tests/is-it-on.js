@@ -15,7 +15,7 @@ describe('/test', () => {
             .get('/test')
             .end((err, res) => {
             res.should.have.status(200);
-            res.body.should.be.a('string');
+            res.text.should.be.a('string');
             done();
         });
     });
