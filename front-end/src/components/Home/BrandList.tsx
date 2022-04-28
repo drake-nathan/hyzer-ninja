@@ -19,7 +19,10 @@ const BrandList = () => {
           <Link to={brand.internalLink} key={i}>
             <StyledBrandListItem>
               <StyledBrandImgDiv>
-                <StyledBrandListImg src={brand.image || defaultImg} />
+                <StyledBrandListImg
+                  src={brand.image || defaultImg}
+                  className="svg-color"
+                />
               </StyledBrandImgDiv>
               <StyledBrandText>{brand.name}</StyledBrandText>
             </StyledBrandListItem>

@@ -1,32 +1,44 @@
-// import MenuIcon from '@mui/icons-material/Menu';
-// import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import { useState } from 'react';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Hamburger from 'hamburger-react';
+import { IThemeTypes, ThemeContext } from '../../contexts/ThemeContext';
 import {
-  HeaderContainer,
+  StyledHeaderContainer,
   StyledTitle,
   StyledNinjaImg,
-  StlyedTitleDiv,
-  StyledIconDiv,
+  StyledTitleDiv,
+  StyledDarkModeDiv,
+  StyledHamburgerDiv,
 } from './Header.styled';
 
-const Header = () => {
-  // const iconSize = 50;
-  const [isOpen, setOpen] = useState(false);
+interface Props {
+  toggleDarkMode: () => void;
+}
+
+const Header = ({ toggleDarkMode }: Props) => {
+  const iconSize = 50;
+  const [isNavOpen, setNavOpen] = useState(false);
+  const { colorTextOffset } = useContext(ThemeContext).theme;
 
   return (
-    <HeaderContainer>
-      <StlyedTitleDiv>
+    <StyledHeaderContainer>
+      <StyledTitleDiv>
         <Link to="/">
-          <StyledNinjaImg src="/favpng_ninja-icon.png" />
+          <StyledNinjaImg className="svg-color" src="/favpng_ninja-icon.png" />
         </Link>
         <StyledTitle>Hyzer Ninja</StyledTitle>
-      </StlyedTitleDiv>
-      <StyledIconDiv>
-        <Hamburger toggled={isOpen} toggle={setOpen} />
-      </StyledIconDiv>
-    </HeaderContainer>
+      </StyledTitleDiv>
+      <StyledDarkModeDiv color={colorTextOffset}>
+        <DarkModeOutlinedIcon
+          sx={{ fontSize: iconSize }}
+          onClick={toggleDarkMode}
+        />
+      </StyledDarkModeDiv>
+      <StyledHamburgerDiv>
+        <Hamburger toggled={isNavOpen} toggle={setNavOpen} />
+      </StyledHamburgerDiv>
+    </StyledHeaderContainer>
   );
 };
 

@@ -3,7 +3,6 @@ import {
   HomeContainer,
   StyledHomeText,
   StyledGif,
-  StyledSearchField,
   StyledTrendingTitleDiv,
   StyledTrendingTitle,
 } from './Home.styled';
@@ -17,7 +16,6 @@ const Home = () => (
       The disc golf marketplace you never knew you needed.
     </StyledHomeText>
     <StyledGif src="/media/frolf.gif" />
-    <StyledSearchField />
     <StyledTrendingTitleDiv>
       <TrendingUpIcon style={{ fontSize: iconSize }} />
       <StyledTrendingTitle>Trending Brands</StyledTrendingTitle>

@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
 
-export const HeaderContainer = styled.div`
+type DarkModeColor = { color: string };
+
+export const StyledHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px gray;
 `;
 
-export const StyledHr = styled.hr`
-  color: gray;
-  margin: 0;
-`;
-
 export const StyledTitle = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   margin: 0.5em;
 `;
 
@@ -22,11 +19,17 @@ export const StyledNinjaImg = styled.img`
   margin: 1em 0 0 1em;
 `;
 
-export const StlyedTitleDiv = styled.div`
+export const StyledTitleDiv = styled.div`
   display: flex;
 `;
 
-export const StyledIconDiv = styled.div`
+export const StyledDarkModeDiv = styled.div<DarkModeColor>`
+  cursor: pointer;
+  margin: 1em;
+  color: ${(props) => props.color};
+`;
+
+export const StyledHamburgerDiv = styled.div`
   align-self: flex-end;
   margin: 1em;
   padding-left: 1em;
