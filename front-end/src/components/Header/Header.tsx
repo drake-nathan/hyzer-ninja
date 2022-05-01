@@ -5,9 +5,10 @@ import Hamburger from 'hamburger-react';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import {
   StyledHeaderContainer,
+  StyledTitleDiv,
   StyledTitle,
   StyledNinjaImg,
-  StyledTitleDiv,
+  StyledRightSideDiv,
   StyledDarkModeDiv,
   StyledHamburgerDiv,
 } from './Header.styled';
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const Header = ({ toggleDarkMode }: Props) => {
-  const iconSize = 50;
+  const iconSize = 35;
   const [isNavOpen, setNavOpen] = useState(false);
   const { colorTextOffset } = useContext(ThemeContext).theme;
 
@@ -29,15 +30,17 @@ const Header = ({ toggleDarkMode }: Props) => {
         </Link>
         <StyledTitle>Hyzer Ninja</StyledTitle>
       </StyledTitleDiv>
-      <StyledDarkModeDiv color={colorTextOffset as string}>
-        <DarkModeOutlinedIcon
-          sx={{ fontSize: iconSize }}
-          onClick={toggleDarkMode}
-        />
-      </StyledDarkModeDiv>
-      <StyledHamburgerDiv>
-        <Hamburger toggled={isNavOpen} toggle={setNavOpen} />
-      </StyledHamburgerDiv>
+      <StyledRightSideDiv>
+        <StyledDarkModeDiv color={colorTextOffset as string}>
+          <DarkModeOutlinedIcon
+            sx={{ fontSize: iconSize }}
+            onClick={toggleDarkMode}
+          />
+        </StyledDarkModeDiv>
+        <StyledHamburgerDiv>
+          <Hamburger toggled={isNavOpen} toggle={setNavOpen} />
+        </StyledHamburgerDiv>
+      </StyledRightSideDiv>
     </StyledHeaderContainer>
   );
 };
