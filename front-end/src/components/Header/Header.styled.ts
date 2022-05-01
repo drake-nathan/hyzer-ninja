@@ -9,8 +9,9 @@ export const StyledHeaderContainer = styled.div`
 `;
 
 export const StyledTitle = styled.h1`
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   margin: 0.5em;
+  max-width: 5ch;
 `;
 
 export const StyledNinjaImg = styled.img`

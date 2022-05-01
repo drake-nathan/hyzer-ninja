@@ -2,7 +2,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Hamburger from 'hamburger-react';
-import { IThemeTypes, ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
 import {
   StyledHeaderContainer,
   StyledTitle,
@@ -29,7 +29,7 @@ const Header = ({ toggleDarkMode }: Props) => {
         </Link>
         <StyledTitle>Hyzer Ninja</StyledTitle>
       </StyledTitleDiv>
-      <StyledDarkModeDiv color={colorTextOffset}>
+      <StyledDarkModeDiv color={colorTextOffset as string}>
         <DarkModeOutlinedIcon
           sx={{ fontSize: iconSize }}
           onClick={toggleDarkMode}
