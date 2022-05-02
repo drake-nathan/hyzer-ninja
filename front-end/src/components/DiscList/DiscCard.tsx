@@ -7,7 +7,7 @@ import {
   Title,
   DescriptionRow,
   Text,
-} from './StyledDiscCard';
+} from './DiscCard.styled';
 
 interface Props {
   // _id: number;

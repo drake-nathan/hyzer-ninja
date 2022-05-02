@@ -31,7 +31,7 @@ const Header = ({ toggleDarkMode }: Props) => {
         <StyledTitle>Hyzer Ninja</StyledTitle>
       </StyledTitleDiv>
       <StyledRightSideDiv>
-        <StyledDarkModeDiv color={colorTextOffset as string}>
+        <StyledDarkModeDiv color={colorTextOffset}>
           <DarkModeOutlinedIcon
             sx={{ fontSize: iconSize }}
             onClick={toggleDarkMode}

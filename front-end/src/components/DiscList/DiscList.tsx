@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import DiscCard from './DiscCard';
-import { DiscListDiv } from './StyledDiscList';
+import { DiscListDiv } from './DiscList.styled';
 import { discs } from '../../content/discs';
 
 const DiscList = () => (

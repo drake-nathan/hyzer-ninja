@@ -8,6 +8,11 @@ export const DiscCardContainer = styled.div<Props>`
   /* border: 1px solid ${(props) => props.color}; */
   border-radius: 3%;
   box-shadow: 1px 1px 5px ${(props) => props.color};
+  transition-duration: 0.4s;
+
+  :hover {
+    transform: scale(1.04);
+  }
 `;
 
 export const Img = styled.img`
@@ -16,7 +21,7 @@ export const Img = styled.img`
 `;
 
 export const DescriptionDiv = styled.div`
-  min-height: 100px;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
   gap: 0.75em;
