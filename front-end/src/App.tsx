@@ -5,6 +5,7 @@ import { ThemeContext, themes } from './contexts/ThemeContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
+import DiscList from './components/DiscList/DiscList';
 import { AppContainer } from './App.styled';
 
 const App = () => {
@@ -27,7 +28,8 @@ const App = () => {
       <AppContainer theme={theme}>
         <Header toggleDarkMode={toggleDarkMode} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<DiscList />} />
         </Routes>
         <Footer />
       </AppContainer>

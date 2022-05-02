@@ -30,7 +30,7 @@ export const themes = {
     colorBg: '#131316',
     colorText: '#fbfbfd',
     colorBgOffset: '#767d90',
-    colorTextOffset: '#e5e7ec',
+    colorTextOffset: '#767d90',
     colorSvg:
       'invert(98%) sepia(2%) saturate(64%) hue-rotate(199deg) brightness(99%) contrast(100%)',
     isDarkMode: true,
