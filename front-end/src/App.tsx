@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import DiscList from './components/DiscList/DiscList';
+import DiscDetailPage from './components/DiscDetail/DiscDetailPage';
 import { AppContainer } from './App.styled';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Header toggleDarkMode={toggleDarkMode} />
         <Routes>
           <Route path="/home" element={<Home />} />
+          <Route path="/disc/:id" element={<DiscDetailPage />} />
           <Route path="/" element={<DiscList />} />
         </Routes>
         <Footer />
