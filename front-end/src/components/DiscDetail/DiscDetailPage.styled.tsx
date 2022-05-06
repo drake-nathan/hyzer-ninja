@@ -14,7 +14,7 @@ export const ImgDiv = styled.div``;
 export const DiscImg = styled.img<Props>`
   width: 100%;
   height: auto;
-  border-radius: 2%;
+  border-radius: 10px;
   box-shadow: 1px 1px 5px ${(props) => props.color};
 `;
 
@@ -30,7 +30,7 @@ export const Title = styled.h3<Props>`
   line-height: 1.3;
   letter-spacing: 1.3px;
   border: 2px solid ${(props) => props.color};
-  border-radius: 3%;
+  border-radius: 10px;
 `;
 
 export const Text = styled.p``;

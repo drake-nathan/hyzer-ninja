@@ -1,6 +1,7 @@
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeIcon from '@mui/icons-material/WbSunnyOutlined';
 import Hamburger from 'hamburger-react';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import NavMobile from './NavMobile';
@@ -16,9 +17,10 @@ import {
 
 interface Props {
   toggleDarkMode: () => void;
+  isDarkMode: boolean;
 }
 
-const Header = ({ toggleDarkMode }: Props) => {
+const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
   const iconSize = 35;
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { colorTextOffset } = useContext(ThemeContext).theme;
@@ -33,10 +35,17 @@ const Header = ({ toggleDarkMode }: Props) => {
       </StyledTitleDiv>
       <StyledRightSideDiv>
         <StyledDarkModeDiv color={colorTextOffset}>
-          <DarkModeOutlinedIcon
-            sx={{ fontSize: iconSize }}
-            onClick={toggleDarkMode}
-          />
+          {isDarkMode ? (
+            <LightModeIcon
+              sx={{ fontSize: iconSize }}
+              onClick={toggleDarkMode}
+            />
+          ) : (
+            <DarkModeIcon
+              sx={{ fontSize: iconSize }}
+              onClick={toggleDarkMode}
+            />
+          )}
         </StyledDarkModeDiv>
         <StyledHamburgerDiv>
           <Hamburger toggled={isNavOpen} toggle={setIsNavOpen} />

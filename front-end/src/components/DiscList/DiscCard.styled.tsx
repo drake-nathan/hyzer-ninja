@@ -6,7 +6,7 @@ export const DiscCardContainer = styled.div<Props>`
   max-width: 256px;
   overflow: hidden;
   /* border: 1px solid ${(props) => props.color}; */
-  border-radius: 3%;
+  border-radius: 10px;
   box-shadow: 1px 1px 5px ${(props) => props.color};
   transition-duration: 0.4s;
 

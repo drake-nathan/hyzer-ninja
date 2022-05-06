@@ -27,7 +27,7 @@ const App = () => {
   return (
     <ThemeContext.Provider value={memoizedThemeState}>
       <AppContainer theme={theme}>
-        <Header toggleDarkMode={toggleDarkMode} />
+        <Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/disc/:id" element={<DiscDetailPage />} />

@@ -41,12 +41,11 @@ const NavMobile: React.FC<Props> = ({ setIsNavOpen }) => {
           <NavStyles.Item>
             <NavStyles.LoginDiv>
               <NavStyles.LoginButton>Sign Up</NavStyles.LoginButton>
-              {!isLoggedIn && (
+              {!isLoggedIn ? (
                 <NavStyles.LoginButton onClick={() => setIsLoggedIn(true)}>
                   Login
                 </NavStyles.LoginButton>
-              )}
-              {isLoggedIn && (
+              ) : (
                 <NavStyles.LoginButton onClick={() => setIsLoggedIn(false)}>
                   Logout
                 </NavStyles.LoginButton>
