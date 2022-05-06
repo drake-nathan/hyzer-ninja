@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Hamburger from 'hamburger-react';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import NavMobile from './NavMobile';
 import {
   StyledHeaderContainer,
   StyledTitleDiv,
@@ -19,7 +20,7 @@ interface Props {
 
 const Header = ({ toggleDarkMode }: Props) => {
   const iconSize = 35;
-  const [isNavOpen, setNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const { colorTextOffset } = useContext(ThemeContext).theme;
 
   return (
@@ -38,9 +39,10 @@ const Header = ({ toggleDarkMode }: Props) => {
           />
         </StyledDarkModeDiv>
         <StyledHamburgerDiv>
-          <Hamburger toggled={isNavOpen} toggle={setNavOpen} />
+          <Hamburger toggled={isNavOpen} toggle={setIsNavOpen} />
         </StyledHamburgerDiv>
       </StyledRightSideDiv>
+      {isNavOpen && <NavMobile setIsNavOpen={setIsNavOpen} />}
     </StyledHeaderContainer>
   );
 };
