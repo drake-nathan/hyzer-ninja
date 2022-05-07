@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
 
 type DarkModeColor = { color: string };
+type IsMobileType = { isMobile: boolean };
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: solid 1px gray;
+  min-height: 78px;
 `;
 
 export const TitleDiv = styled.div`
@@ -14,10 +16,10 @@ export const TitleDiv = styled.div`
   align-items: center;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<IsMobileType>`
   font-family: 'Roboto Mono', monospace;
-  font-size: 1.75rem;
-  max-width: 5ch;
+  font-size: ${(props) => (props.isMobile ? '1.75rem' : '2.5rem')};
+  max-width: ${(props) => (props.isMobile ? '5ch' : '100%')};
   margin: 0.25em 0.5em;
 `;
 

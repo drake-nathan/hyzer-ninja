@@ -8,7 +8,7 @@ interface Props {
 export const AppContainer = styled.div<Props>`
   background-color: ${(props) => props.theme.colorBg};
   color: ${(props) => props.theme.colorText};
-  transition-duration: 0.4s;
+  transition-duration: 400ms;
 
   .svg-color {
     filter: ${(props) => props.theme.colorSvg};

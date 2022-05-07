@@ -25,7 +25,7 @@ const NavContent: React.FC = () => {
         </NavStyles.Link>
       </NavStyles.Item>
 
-      <NavStyles.LoginDiv isNavOpen={isNavOpen}>
+      <NavStyles.ButtonDiv isNavOpen={isNavOpen}>
         {!isLoggedIn ? (
           <>
             <NavStyles.SignUpButton className="signup" theme={theme}>
@@ -48,7 +48,7 @@ const NavContent: React.FC = () => {
             Logout
           </NavStyles.LogoutButton>
         )}
-      </NavStyles.LoginDiv>
+      </NavStyles.ButtonDiv>
     </>
   );
 };

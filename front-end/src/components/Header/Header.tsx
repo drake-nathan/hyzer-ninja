@@ -34,7 +34,9 @@ const Header: React.FC<Props> = ({ toggleDarkMode }) => {
               src="/favpng_ninja-icon.png"
             />
           </Link>
-          <HeaderStyles.Title>Hyzer Ninja</HeaderStyles.Title>
+          <HeaderStyles.Title isMobile={navBreakPoint}>
+            Hyzer Ninja
+          </HeaderStyles.Title>
         </HeaderStyles.TitleDiv>
         <HeaderStyles.RightSideDiv>
           <HeaderStyles.DarkModeDiv color={colorTextOffset}>

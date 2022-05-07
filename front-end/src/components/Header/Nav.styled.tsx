@@ -22,6 +22,7 @@ export const MobileContainer = styled.div<ThemeType>`
 
 export const FullContainer = styled.div`
   display: flex;
+  font-size: 1.125rem;
 `;
 
 export const Item = styled.div`
@@ -34,14 +35,14 @@ export const Link = styled.a``;
 
 export const Text = styled.span<ThemeType>`
   color: ${(props) => props.theme.colorText};
-  margin-left: 0.5em;
+  margin-left: 0.25em;
 `;
 
-export const LoginDiv = styled.div<NavOpenType>`
+export const ButtonDiv = styled.div<NavOpenType>`
   display: flex;
   justify-content: center;
   border-top: ${(props) => (props.isNavOpen ? '1px solid gray' : 'none')};
-  margin-top: ${(props) => (props.isNavOpen ? '1em' : '0')};
+  margin: ${(props) => (props.isNavOpen ? '1em 0 0 0' : '0 0.5em 0 0.5em')};
   padding-top: ${(props) => (props.isNavOpen ? '1em' : '0')};
 `;
 
