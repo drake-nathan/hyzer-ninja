@@ -27,31 +27,37 @@ const NavMobile: React.FC<Props> = ({ setIsNavOpen }) => {
       <NavStyles.Container theme={theme}>
         <NavStyles.List>
           <NavStyles.Item>
-            <NavStyles.Link>
-              <SellIcon />
-              <NavStyles.Text>Sell</NavStyles.Text>
+            <SellIcon />
+            <NavStyles.Link href="#">
+              <NavStyles.Text theme={theme}>Sell</NavStyles.Text>
             </NavStyles.Link>
           </NavStyles.Item>
+
           <NavStyles.Item>
-            <NavStyles.Link>
-              <LightbulbIcon />
-              <NavStyles.Text>Request Features</NavStyles.Text>
+            <LightbulbIcon />
+            <NavStyles.Link href="#">
+              <NavStyles.Text theme={theme}>Request Features</NavStyles.Text>
             </NavStyles.Link>
           </NavStyles.Item>
-          <NavStyles.Item>
-            <NavStyles.LoginDiv>
-              <NavStyles.LoginButton>Sign Up</NavStyles.LoginButton>
-              {!isLoggedIn ? (
-                <NavStyles.LoginButton onClick={() => setIsLoggedIn(true)}>
-                  Login
-                </NavStyles.LoginButton>
-              ) : (
-                <NavStyles.LoginButton onClick={() => setIsLoggedIn(false)}>
-                  Logout
-                </NavStyles.LoginButton>
-              )}
-            </NavStyles.LoginDiv>
-          </NavStyles.Item>
+
+          <NavStyles.LoginDiv>
+            <NavStyles.LoginButton theme={theme}>Sign Up</NavStyles.LoginButton>
+            {!isLoggedIn ? (
+              <NavStyles.LoginButton
+                theme={theme}
+                onClick={() => setIsLoggedIn(true)}
+              >
+                Login
+              </NavStyles.LoginButton>
+            ) : (
+              <NavStyles.LoginButton
+                theme={theme}
+                onClick={() => setIsLoggedIn(false)}
+              >
+                Logout
+              </NavStyles.LoginButton>
+            )}
+          </NavStyles.LoginDiv>
         </NavStyles.List>
       </NavStyles.Container>
     </div>,
