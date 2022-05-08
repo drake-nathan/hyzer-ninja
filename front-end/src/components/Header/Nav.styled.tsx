@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { IThemeTypes } from '../../contexts/ThemeContext';
+import { Button } from '../Main.styled';
 
 type ThemeType = { theme: IThemeTypes };
 type NavOpenType = { isNavOpen: boolean };
@@ -44,19 +45,6 @@ export const ButtonDiv = styled.div<NavOpenType>`
   border-top: ${(props) => (props.isNavOpen ? '1px solid gray' : 'none')};
   margin: ${(props) => (props.isNavOpen ? '1em 0 0 0' : '0 0.5em 0 0.5em')};
   padding-top: ${(props) => (props.isNavOpen ? '1em' : '0')};
-`;
-
-const Button = styled.button<ThemeType>`
-  background-color: ${(props) => props.theme.colorBg};
-  color: ${(props) => props.theme.colorText};
-  border: 1px solid gray;
-  padding: 0.5em;
-  min-width: 70px;
-  border-radius: 5px;
-  cursor: pointer;
-  :hover {
-    background-color: ${(props) => props.theme.colorBgOffset};
-  }
 `;
 
 export const SignUpButton = styled(Button)`

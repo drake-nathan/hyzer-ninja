@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import DiscList from './components/DiscList/DiscList';
 import DiscDetailPage from './components/DiscDetail/DiscDetailPage';
+import RegisterForm from './components/Forms/RegisterForm';
 import { AppContainer } from './App.styled';
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/disc/:id" element={<DiscDetailPage />} />
+          <Route path="/register" element={<RegisterForm />} />
           <Route path="/" element={<DiscList />} />
         </Routes>
         <Footer />

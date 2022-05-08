@@ -3,13 +3,18 @@ import styled from '@emotion/styled';
 type Props = { color: string };
 
 export const DiscDetailContainer = styled.div`
+  max-width: 1115px;
+  margin: 0 auto;
+
   display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: 1em;
+  /* flex-wrap: wrap; */
+  gap: 1.5em;
+  padding: 1.5em;
 `;
 
-export const ImgDiv = styled.div``;
+export const ImgDiv = styled.div`
+  /* max-width: 50%; */
+`;
 
 export const DiscImg = styled.img<Props>`
   width: 100%;
@@ -21,16 +26,24 @@ export const DiscImg = styled.img<Props>`
 export const DescriptionDiv = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0.5em;
+  align-items: center;
+  min-width: 50%;
 `;
 
 export const Title = styled.h3<Props>`
+  text-align: center;
   padding: 0.5em;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1.3;
   letter-spacing: 1.3px;
-  border: 2px solid ${(props) => props.color};
-  border-radius: 10px;
+  border-bottom: 1px solid ${(props) => props.color};
 `;
 
-export const Text = styled.p``;
+export const List = styled.ul`
+  padding: 1em;
+`;
+
+export const Text = styled.li`
+  font-size: 1.25rem;
+  margin-bottom: 0.5em;
+`;
