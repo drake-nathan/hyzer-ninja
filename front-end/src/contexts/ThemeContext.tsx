@@ -5,6 +5,7 @@ export interface IThemeTypes {
   colorText: string;
   colorBgOffset: string;
   colorTextOffset: string;
+  colorFormBg: string;
   colorSvg: string;
   isDarkMode: boolean;
 }
@@ -22,6 +23,7 @@ export const themes = {
     colorText: '#22252f',
     colorBgOffset: '#e5e7ec',
     colorTextOffset: '#767d90',
+    colorFormBg: '#f3f3f6',
     colorSvg:
       'invert(12%) sepia(27%) saturate(419%) hue-rotate(188deg) brightness(95%) contrast(94%)',
     isDarkMode: false,
@@ -31,6 +33,7 @@ export const themes = {
     colorText: '#fbfbfd',
     colorBgOffset: '#767d90',
     colorTextOffset: '#767d90',
+    colorFormBg: '#2e3035',
     colorSvg:
       'invert(98%) sepia(2%) saturate(64%) hue-rotate(199deg) brightness(99%) contrast(100%)',
     isDarkMode: true,

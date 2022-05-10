@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { IThemeTypes } from '../contexts/contextIndex';
 
-type ThemeType = { theme: IThemeTypes };
+export type ThemeType = { theme: IThemeTypes };
 
 export const Container = styled.div`
   display: flex;

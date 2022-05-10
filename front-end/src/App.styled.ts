@@ -14,3 +14,7 @@ export const AppContainer = styled.div<Props>`
     filter: ${(props) => props.theme.colorSvg};
   }
 `;
+
+export const MainContainer = styled.div`
+  min-height: 79vh;
+`;

@@ -24,7 +24,7 @@ export const Input = styled.input<ThemeType>`
   border-radius: 5px;
   padding: 0.5em;
   max-width: 80%;
-  background-color: ${(props) => props.theme.colorBgOffset};
+  background-color: ${(props) => props.theme.colorFormBg};
   color: ${(props) => props.theme.colorText};
 `;
 

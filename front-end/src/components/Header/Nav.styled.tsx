@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
-import { IThemeTypes } from '../../contexts/ThemeContext';
-import { Button } from '../Main.styled';
+import { ThemeType, Button } from '../Main.styled';
 
-type ThemeType = { theme: IThemeTypes };
 type NavOpenType = { isNavOpen: boolean };
 
 export const MobileContainer = styled.div<ThemeType>`

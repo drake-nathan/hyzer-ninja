@@ -5,6 +5,7 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
+    "strictFunctionTypes": false,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

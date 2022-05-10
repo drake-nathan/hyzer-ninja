@@ -8,7 +8,7 @@ import Home from './components/Home/Home';
 import DiscList from './components/DiscList/DiscList';
 import DiscDetailPage from './components/DiscDetail/DiscDetailPage';
 import RegisterForm from './components/Forms/RegisterForm';
-import { AppContainer } from './App.styled';
+import * as St from './App.styled';
 
 const App = () => {
   const [theme, setTheme] = useState(themes.light);
@@ -27,16 +27,18 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={memoizedThemeState}>
-      <AppContainer theme={theme}>
+      <St.AppContainer theme={theme}>
         <Header toggleDarkMode={toggleDarkMode} />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/disc/:id" element={<DiscDetailPage />} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/" element={<DiscList />} />
-        </Routes>
+        <St.MainContainer>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/disc/:id" element={<DiscDetailPage />} />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/" element={<DiscList />} />
+          </Routes>
+        </St.MainContainer>
         <Footer />
-      </AppContainer>
+      </St.AppContainer>
     </ThemeContext.Provider>
   );
 };
