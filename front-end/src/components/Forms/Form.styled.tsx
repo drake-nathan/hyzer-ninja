@@ -17,6 +17,21 @@ export const Form = styled.form`
   font-size: 1.25em;
 `;
 
+export const DiscForm = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  max-width: 400px;
+  gap: 1em;
+  font-size: 1.25em;
+`;
+
+export const InputDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1em;
+`;
+
 export const Label = styled.label``;
 
 export const Input = styled.input<ThemeType>`

@@ -1,58 +1,55 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import SellIcon from '@mui/icons-material/SellOutlined';
 import LightbulbIcon from '@mui/icons-material/LightbulbOutlined';
-import { ThemeContext, NavOpenContext } from '../../contexts/contextIndex';
-import * as NavStyled from './Nav.styled';
+import {
+  ThemeContext,
+  NavOpenContext,
+  LoginContext,
+} from '../../contexts/contextIndex';
+import * as St from './Nav.styled';
 
 const NavContent: React.FC = () => {
   const { theme } = useContext(ThemeContext);
   const isNavOpen = useContext(NavOpenContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
 
   return (
     <>
-      <NavStyled.Item>
+      <St.Item>
         <SellIcon />
-        <NavStyled.Link href="#">
-          <NavStyled.Text theme={theme}>Sell</NavStyled.Text>
-        </NavStyled.Link>
-      </NavStyled.Item>
+        <St.Link href="/newdisc">
+          <St.Text theme={theme}>Sell</St.Text>
+        </St.Link>
+      </St.Item>
 
-      <NavStyled.Item>
+      <St.Item>
         <LightbulbIcon />
-        <NavStyled.Link href="#">
-          <NavStyled.Text theme={theme}>Request Features</NavStyled.Text>
-        </NavStyled.Link>
-      </NavStyled.Item>
+        <St.Link href="#">
+          <St.Text theme={theme}>Request Features</St.Text>
+        </St.Link>
+      </St.Item>
 
-      <NavStyled.ButtonDiv isNavOpen={isNavOpen}>
+      <St.ButtonDiv isNavOpen={isNavOpen}>
         {!isLoggedIn ? (
           <>
-            <NavStyled.Link href="/register">
-              <NavStyled.SignUpButton className="signup" theme={theme}>
-                Sign Up
-              </NavStyled.SignUpButton>
-            </NavStyled.Link>
-            <NavStyled.Link href="#">
-              <NavStyled.LoginButton
-                className="login"
-                theme={theme}
-                onClick={() => setIsLoggedIn(true)}
-              >
+            <St.Link href="/register">
+              <St.SignUpButton theme={theme}>Sign Up</St.SignUpButton>
+            </St.Link>
+            <St.Link href="#">
+              <St.LoginButton theme={theme} onClick={() => setIsLoggedIn(true)}>
                 Login
-              </NavStyled.LoginButton>
-            </NavStyled.Link>
+              </St.LoginButton>
+            </St.Link>
           </>
         ) : (
-          <NavStyled.LogoutButton
-            className="logout"
-            theme={theme}
-            onClick={() => setIsLoggedIn(false)}
-          >
-            Logout
-          </NavStyled.LogoutButton>
+          <>
+            <St.LogoutButton theme={theme} onClick={() => setIsLoggedIn(false)}>
+              Logout
+            </St.LogoutButton>
+            <St.ProfilePic src="/media/selfie.jpeg" />
+          </>
         )}
-      </NavStyled.ButtonDiv>
+      </St.ButtonDiv>
     </>
   );
 };

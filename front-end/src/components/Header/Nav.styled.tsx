@@ -40,9 +40,17 @@ export const Text = styled.span<ThemeType>`
 export const ButtonDiv = styled.div<NavOpenType>`
   display: flex;
   justify-content: center;
+  align-items: center;
   border-top: ${(props) => (props.isNavOpen ? '1px solid gray' : 'none')};
   margin: ${(props) => (props.isNavOpen ? '1em 0 0 0' : '0 0.5em 0 0.5em')};
   padding-top: ${(props) => (props.isNavOpen ? '1em' : '0')};
+`;
+
+export const ProfilePic = styled.img`
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+  margin-left: 1em;
 `;
 
 export const SignUpButton = styled(Button)`
@@ -54,6 +62,4 @@ export const LoginButton = styled(Button)`
   border-left: none;
 `;
 
-export const LogoutButton = styled(Button)`
-  min-width: 142px;
-`;
+export const LogoutButton = styled(Button)``;

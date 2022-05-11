@@ -25,19 +25,19 @@ const RegisterForm = () => {
   });
 
   const onSubmit: SubmitHandler<FormTypes> = (data) => {
-    [
-      {
-        type: 'manual',
-        name: 'username',
-        message: 'Double Check This',
-      },
-      {
-        type: 'manual',
-        name: 'firstName',
-        message: 'Triple Check This',
-      },
-    ].forEach(({ name, type, message }) => setError(name, { type, message }));
-    
+    // [
+    //   {
+    //     type: 'manual',
+    //     name: 'username',
+    //     message: 'Double Check This',
+    //   },
+    //   {
+    //     type: 'manual',
+    //     name: 'firstName',
+    //     message: 'Triple Check This',
+    //   },
+    // ].forEach(({ name, type, message }) => setError(name, { type, message }));
+
     console.log(data);
   };
 
