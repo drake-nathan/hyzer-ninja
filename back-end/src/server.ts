@@ -4,7 +4,8 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import http from 'http';
 
-import DiscRouter from './routers/DiscRouter';
+import setupDevDb from './dbconfig/setup-dev-db';
+import DiscRouter from './routers/discRouter';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/test', (req, res) => res.send('Beers, Beets, Battlestar Gallactica'));
+app.use('/setupdevdb', setupDevDb);
 app.use('/api/discs', DiscRouter);
 
 const port = parseInt(process.env.PORT);

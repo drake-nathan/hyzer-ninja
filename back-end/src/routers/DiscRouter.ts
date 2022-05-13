@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDiscs } from '../controllers/DiscsController';
+import { getDiscs } from '../controllers/discs-controller';
 
 const router = Router();
 

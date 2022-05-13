@@ -14,6 +14,7 @@ const dbconnector_1 = require("../dbconfig/dbconnector");
 const getDiscs = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const client = yield dbconnector_1.pool.connect();
+        console.log('db connected');
         const sql = 'SELECT * FROM discs';
         const { rows } = yield client.query(sql);
         const discs = rows;

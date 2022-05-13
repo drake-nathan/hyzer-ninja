@@ -32,17 +32,19 @@ const DiscForm: React.FC = () => {
 
   return (
     <St.Container>
-      <St.DiscForm onSubmit={handleSubmit(onSubmit)}>
-        <St.Label>Listing Title:</St.Label>
-        <St.Input {...register('title')} theme={theme} />
-        <St.Label>Brand:</St.Label>
-        <St.Input {...register('brand')} theme={theme} />
-        <St.Label>Disc Mold:</St.Label>
-        <St.Input {...register('mold')} theme={theme} />
+      <St.Form onSubmit={handleSubmit(onSubmit)}>
+        <St.DiscFormDiv>
+          <St.Label>Listing Title:</St.Label>
+          <St.Input {...register('title')} theme={theme} />
+          <St.Label>Brand:</St.Label>
+          <St.Input {...register('brand')} theme={theme} />
+          <St.Label>Disc Mold:</St.Label>
+          <St.Input {...register('mold')} theme={theme} />
+        </St.DiscFormDiv>
         <St.SubmitButton type="submit" theme={theme}>
           Create Listing
         </St.SubmitButton>
-      </St.DiscForm>
+      </St.Form>
     </St.Container>
   );
 };

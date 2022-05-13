@@ -14,22 +14,15 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  font-size: 1.25em;
+  font-size: 1.25rem;
 `;
 
-export const DiscForm = styled.form`
+export const DiscFormDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
+  margin: 1em auto;
   max-width: 400px;
-  gap: 1em;
-  font-size: 1.25em;
-`;
-
-export const InputDiv = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1em;
+  gap: 1.5em;
 `;
 
 export const Label = styled.label``;
