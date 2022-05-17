@@ -1,18 +1,23 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from '../../contexts/ThemeContext';
-import { discs } from '../../content/discs';
+import { fetchSingleDisc } from '../../actions/actionsIndex';
+import { DiscTypes } from '../../types/typesindex';
 import * as St from './DiscDetailPage.styled';
 
 const DiscDetailPage = () => {
-  const { id } = useParams();
-  const disc = discs.find((e) => `${e._id}` === id);
   const { colorTextOffset } = useContext(ThemeContext).theme;
+  const { id } = useParams();
+  const [disc, setDisc] = useState<DiscTypes>();
+
+  useEffect(() => {
+    fetchSingleDisc(id as string).then((res) => setDisc(res?.data));
+  }, [id]);
 
   return (
     <St.DiscDetailContainer>
       <St.ImgDiv>
-        <St.DiscImg src={disc?.image} color={colorTextOffset} />
+        <St.DiscImg src={disc?.image_url} color={colorTextOffset} />
       </St.ImgDiv>
       <St.DescriptionDiv>
         <St.Title color={colorTextOffset}>{disc?.title}</St.Title>

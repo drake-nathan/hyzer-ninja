@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { getDiscs } from '../controllers/discs-controller';
+import * as discs from '../controllers/discs-controller';
 
 const router = Router();
 
-router.get('/', getDiscs);
+// api/discs
+router.get('/', discs.getDiscs);
+router.get('/:id', discs.getSingleDisc);
 
 export default router;

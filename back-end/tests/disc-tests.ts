@@ -24,7 +24,7 @@ describe('/api/discs/:id', () => {
   it('should return a single object of one disc based on id param', (done) => {
     chai
       .request(server)
-      .get('/api/discs/:id')
+      .get('/api/discs/1')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');

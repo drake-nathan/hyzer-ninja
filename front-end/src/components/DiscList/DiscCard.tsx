@@ -28,8 +28,6 @@ const DiscCard = ({
   image_url,
 }: Props) => {
   const { colorTextOffset } = useContext(ThemeContext).theme;
-  console.log(typeof price);
-  console.log(image_url);
 
   return (
     <St.DiscCardContainer color={colorTextOffset}>

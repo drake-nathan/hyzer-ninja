@@ -1,5 +1,5 @@
 export interface DiscTypes {
-  _id: number;
+  disc_id: number;
   title: string;
   brand: string;
   type: string;
