@@ -1,7 +1,7 @@
 export const discs = [
   {
     _id: 1,
-    title: `Flat 2nd Run Discmania CD2`,
+    title: 'Flat 2nd Run Discmania CD2',
     brand: 'Discmania',
     type: 'fairway',
     mold: 'CD2',

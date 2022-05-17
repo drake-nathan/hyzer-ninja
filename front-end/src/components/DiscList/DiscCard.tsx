@@ -1,13 +1,7 @@
+/* eslint-disable camelcase */
 import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/ThemeContext';
-import {
-  DiscCardContainer,
-  Img,
-  DescriptionDiv,
-  Title,
-  DescriptionRow,
-  Text,
-} from './DiscCard.styled';
+import * as St from './DiscCard.styled';
 
 interface Props {
   // _id: number;
@@ -20,7 +14,7 @@ interface Props {
   run?: string;
   // condition: number;
   price: number;
-  image: string;
+  image_url: string;
 }
 
 const DiscCard = ({
@@ -31,31 +25,33 @@ const DiscCard = ({
   subPlastic,
   run,
   price,
-  image,
+  image_url,
 }: Props) => {
   const { colorTextOffset } = useContext(ThemeContext).theme;
+  console.log(typeof price);
+  console.log(image_url);
 
   return (
-    <DiscCardContainer color={colorTextOffset}>
-      <Img src={image} />
-      <DescriptionDiv>
-        <Title>{title}</Title>
-        <DescriptionRow>
-          <Text>
+    <St.DiscCardContainer color={colorTextOffset}>
+      <St.Img src={image_url} />
+      <St.DescriptionDiv>
+        <St.Title>{title}</St.Title>
+        <St.DescriptionRow>
+          <St.Text>
             {brand} {mold}
-          </Text>
-          <Text>
+          </St.Text>
+          <St.Text>
             <strong>${price}</strong>
-          </Text>
-        </DescriptionRow>
-        <DescriptionRow>
-          <Text>
+          </St.Text>
+        </St.DescriptionRow>
+        <St.DescriptionRow>
+          <St.Text>
             {subPlastic} {basePlastic}
-          </Text>
-          <Text>{run}</Text>
-        </DescriptionRow>
-      </DescriptionDiv>
-    </DiscCardContainer>
+          </St.Text>
+          <St.Text>{run}</St.Text>
+        </St.DescriptionRow>
+      </St.DescriptionDiv>
+    </St.DiscCardContainer>
   );
 };
 

@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import http from 'http';
 
 import setupDevDb from './dbconfig/setup-dev-db';
-import DiscRouter from './routers/discRouter';
+import discRouter from './routers/disc-router';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/test', (req, res) => res.send('Beers, Beets, Battlestar Gallactica'));
 app.use('/setupdevdb', setupDevDb);
-app.use('/api/discs', DiscRouter);
+app.use('/api/discs', discRouter);
 
 const port = parseInt(process.env.PORT);
 export const server = http.createServer(app);
