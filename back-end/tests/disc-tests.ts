@@ -57,12 +57,13 @@ describe('/api/discs/:id', () => {
       });
   });
 
-  // it('should return a 404 if disc id does not exist', (done) => {
+  // it('should delete a disc when given an existing disc id', (done) => {
   //   chai
   //     .request(server)
-  //     .get('/api/discs/696969696969696969696969')
+  //     .delete('/api/discs/23')
   //     .end((err, res) => {
-  //       res.should.have.status(404);
+  //       res.should.have.status(200);
+  //       res.body.should.be.an('object');
   //       done();
   //     });
   // });
