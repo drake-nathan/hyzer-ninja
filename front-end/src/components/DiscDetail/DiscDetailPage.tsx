@@ -6,7 +6,7 @@ import { DiscTypes } from '../../types/typesindex';
 import * as St from './DiscDetailPage.styled';
 
 const DiscDetailPage = () => {
-  const { colorTextOffset } = useContext(ThemeContext).theme;
+  const { theme } = useContext(ThemeContext);
   const { id } = useParams();
   const [disc, setDisc] = useState<DiscTypes>();
 
@@ -17,10 +17,10 @@ const DiscDetailPage = () => {
   return (
     <St.DiscDetailContainer>
       <St.ImgDiv>
-        <St.DiscImg src={disc?.image_url} color={colorTextOffset} />
+        <St.DiscImg src={disc?.image_url} color={theme.colorTextOffset} />
       </St.ImgDiv>
       <St.DescriptionDiv>
-        <St.Title color={colorTextOffset}>{disc?.title}</St.Title>
+        <St.Title color={theme.colorTextOffset}>{disc?.title}</St.Title>
         <St.List>
           <St.Text>
             {disc?.brand} {disc?.mold}
@@ -31,6 +31,7 @@ const DiscDetailPage = () => {
           <St.Text>Condition: {disc?.condition}/10</St.Text>
           <St.Text>Price: ${disc?.price}</St.Text>
         </St.List>
+        <St.EditButton theme={theme}>Edit</St.EditButton>
       </St.DescriptionDiv>
     </St.DiscDetailContainer>
   );

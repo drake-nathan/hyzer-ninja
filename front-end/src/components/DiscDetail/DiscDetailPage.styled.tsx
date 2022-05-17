@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Button } from '../Main.styled';
 
 type Props = { color: string };
 
@@ -47,3 +48,5 @@ export const Text = styled.li`
   font-size: 1.25rem;
   margin-bottom: 0.5em;
 `;
+
+export const EditButton = styled(Button)``;
