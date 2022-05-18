@@ -55,18 +55,27 @@ const DiscForm: React.FC = () => {
     }));
   };
 
+  const handleSliderChange = (value: number) => {
+    setNewDisc((currentValues) => ({
+      ...currentValues,
+      condition: value,
+    }));
+    console.log(value);
+  };
+
   const handleFormChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     inputType: string
   ) => {
     setNewDisc((currentValues) => ({
       ...currentValues,
-      [inputType]: e.currentTarget.value,
+      [inputType]: e.target.value,
     }));
   };
 
   const onSubmit: SubmitHandler<FormTypes> = () => {
     addDisc(newDisc);
+    console.log(newDisc);
   };
 
   return (
@@ -138,9 +147,13 @@ const DiscForm: React.FC = () => {
             marks={marks}
             min={1}
             max={10}
+            onChangeCommitted={(_, value) =>
+              handleSliderChange(value as number)
+            }
           />
           <St.Label>Price:</St.Label>
           <St.Input
+            type="number"
             {...register('price')}
             theme={theme}
             placeholder="Whole dollars including shipping"
@@ -148,6 +161,7 @@ const DiscForm: React.FC = () => {
           />
           <St.Label>Image:</St.Label>
           <St.Input
+            type="file"
             {...register('imageUrl')}
             theme={theme}
             onChange={(e) => handleFormChange(e, 'imageUrl')}
