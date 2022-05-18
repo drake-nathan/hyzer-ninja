@@ -9,8 +9,8 @@ interface Props {
   brand: string;
   // type: string;
   mold: string;
-  basePlastic: string;
-  subPlastic?: string;
+  base_plastic: string;
+  sub_plastic?: string;
   run?: string;
   // condition: number;
   price: number;
@@ -21,8 +21,8 @@ const DiscCard = ({
   title,
   brand,
   mold,
-  basePlastic,
-  subPlastic,
+  base_plastic,
+  sub_plastic,
   run,
   price,
   image_url,
@@ -44,7 +44,7 @@ const DiscCard = ({
         </St.DescriptionRow>
         <St.DescriptionRow>
           <St.Text>
-            {subPlastic} {basePlastic}
+            {sub_plastic} {base_plastic}
           </St.Text>
           <St.Text>{run}</St.Text>
         </St.DescriptionRow>

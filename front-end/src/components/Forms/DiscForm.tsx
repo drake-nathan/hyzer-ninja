@@ -1,9 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { MenuItem } from '@mui/material';
+import { SelectChangeEvent } from '@mui/material/Select';
 import * as yup from 'yup';
 import { ThemeContext } from '../../contexts/contextIndex';
+import { marks } from './formConstants';
+import { addDisc } from '../../actions/actionsIndex';
+import { IDiscTypesJS } from '../../types/typesindex';
 import * as St from './Form.styled';
 
 const discSchema = yup.object({
@@ -22,14 +27,46 @@ const discSchema = yup.object({
 type FormTypes = yup.InferType<typeof discSchema>;
 
 const DiscForm: React.FC = () => {
+  const [discType, setDiscType] = useState('');
+  const [newDisc, setNewDisc] = useState<IDiscTypesJS>({
+    title: '',
+    brand: '',
+    type: '',
+    mold: '',
+    basePlastic: '',
+    subPlastic: '',
+    run: '',
+    condition: 0,
+    price: 0,
+    imageUrl: '',
+  });
+
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const { register, handleSubmit } = useForm<FormTypes>({
     resolver: yupResolver(discSchema),
   });
 
-  const onSubmit: SubmitHandler<FormTypes> = (data) => {
-    console.log(data);
+  const handleDiscTypeChange = (e: SelectChangeEvent) => {
+    setDiscType(e.target.value);
+    setNewDisc((currentValues) => ({
+      ...currentValues,
+      type: e.target.value,
+    }));
+  };
+
+  const handleFormChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    inputType: string
+  ) => {
+    setNewDisc((currentValues) => ({
+      ...currentValues,
+      [inputType]: e.currentTarget.value,
+    }));
+  };
+
+  const onSubmit: SubmitHandler<FormTypes> = () => {
+    addDisc(newDisc);
   };
 
   return (
@@ -40,30 +77,81 @@ const DiscForm: React.FC = () => {
           <St.Input
             {...register('title')}
             theme={theme}
-            placeholder="Listing Title"
+            placeholder="Title"
+            onChange={(e) => handleFormChange(e, 'title')}
           />
           <St.Label>Brand:</St.Label>
           <St.Input
             {...register('brand')}
             theme={theme}
-            placeholder="Brand (Discmania, Discraft, etc)"
+            placeholder="Discmania, Discraft..."
+            onChange={(e) => handleFormChange(e, 'brand')}
+          />
+          <St.Label>Disc Mold:</St.Label>
+          <St.Input
+            {...register('mold')}
+            theme={theme}
+            placeholder="Destroyer, P2, Harp..."
+            onChange={(e) => handleFormChange(e, 'mold')}
           />
           <St.Label>Type:</St.Label>
-          <St.Input {...register('type')} theme={theme} />
-          <St.Label>Disc Mold:</St.Label>
-          <St.Input {...register('mold')} theme={theme} placeholder="Title" />
+          <St.Dropdown
+            theme={theme}
+            value={discType}
+            label="Disc Type"
+            onChange={handleDiscTypeChange}
+          >
+            <MenuItem value="putter">Putter</MenuItem>
+            <MenuItem value="approach">Approach</MenuItem>
+            <MenuItem value="mid">Mid-Range</MenuItem>
+            <MenuItem value="fairway">Fairway Driver</MenuItem>
+            <MenuItem value="distance">Distance Driver</MenuItem>
+          </St.Dropdown>
           <St.Label>Base Plastic:</St.Label>
-          <St.Input {...register('basePlastic')} theme={theme} />
+          <St.Input
+            {...register('basePlastic')}
+            theme={theme}
+            placeholder="Star, C-Line, ESP..."
+            onChange={(e) => handleFormChange(e, 'basePlastic')}
+          />
           <St.Label>Sub Plastic:</St.Label>
-          <St.Input {...register('subPlastic')} theme={theme} />
+          <St.Input
+            {...register('subPlastic')}
+            theme={theme}
+            placeholder="Glow, Swirly, Metal-Flake..."
+            onChange={(e) => handleFormChange(e, 'subPlastic')}
+          />
           <St.Label>Disc Run:</St.Label>
-          <St.Input {...register('run')} theme={theme} />
+          <St.Input
+            {...register('run')}
+            theme={theme}
+            placeholder="2nd Run, McBeth 4x..."
+            onChange={(e) => handleFormChange(e, 'run')}
+          />
           <St.Label>Disc Condition:</St.Label>
-          <St.Input {...register('condition')} theme={theme} />
+          <St.CustomSlider
+            theme={theme}
+            aria-label="Disc Condition"
+            defaultValue={7}
+            valueLabelDisplay="auto"
+            step={1}
+            marks={marks}
+            min={1}
+            max={10}
+          />
           <St.Label>Price:</St.Label>
-          <St.Input {...register('price')} theme={theme} />
+          <St.Input
+            {...register('price')}
+            theme={theme}
+            placeholder="Whole dollars including shipping"
+            onChange={(e) => handleFormChange(e, 'price')}
+          />
           <St.Label>Image:</St.Label>
-          <St.Input {...register('imageUrl')} theme={theme} />
+          <St.Input
+            {...register('imageUrl')}
+            theme={theme}
+            onChange={(e) => handleFormChange(e, 'imageUrl')}
+          />
         </St.DiscFormDiv>
         <St.SubmitButton type="submit" theme={theme}>
           Create Listing
