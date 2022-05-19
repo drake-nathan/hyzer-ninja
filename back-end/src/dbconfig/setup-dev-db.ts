@@ -3,6 +3,9 @@ import { Request, Response } from 'express';
 import { discs } from '../dummy-data/discs';
 import { pool } from './db-connector';
 
+const getRandNum = (min: number, max: number) =>
+  Math.random() * (max - min) + min;
+
 const setupDevDb = async (req: Request, res: Response) => {
   const createUserTable = `
     CREATE TABLE users (
@@ -21,7 +24,8 @@ const setupDevDb = async (req: Request, res: Response) => {
 
   const populateTestUsers = `
     INSERT INTO users (username, email, paypal, password)
-      VALUES ('TheNathanDrake', 'nathandrakedrums@gmail.com', 'soundmanlpte@gmail.com', 'awesome')
+      VALUES ('TheNathanDrake', 'nathandrakedrums@gmail.com', 'soundmanlpte@gmail.com', 'awesome'),
+      ('JoeSchmoe', 'joe@deez.com', 'joe@deez.com', 'awesome')
   `;
 
   await pool.query(populateTestUsers).catch((err) => {
@@ -59,12 +63,12 @@ const setupDevDb = async (req: Request, res: Response) => {
           '${disc.type}', 
           '${disc.mold}', 
           '${disc.basePlastic}', 
-          '${disc.subPlastic || 'NULL'}', 
-          '${disc.run || 'NULL'}', 
+          '${disc.subPlastic || ''}', 
+          '${disc.run || ''}', 
           ${disc.condition}, 
           ${disc.price}, 
           '${disc.image}', 
-          1)`
+          ${getRandNum(1, 2)})`
       )};
   `;
 

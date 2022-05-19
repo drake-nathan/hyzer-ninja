@@ -35,10 +35,8 @@ const NavContent: React.FC = () => {
             <St.Link href="/register">
               <St.SignUpButton theme={theme}>Sign Up</St.SignUpButton>
             </St.Link>
-            <St.Link href="#">
-              <St.LoginButton theme={theme} onClick={() => setIsLoggedIn(true)}>
-                Login
-              </St.LoginButton>
+            <St.Link href="/login">
+              <St.LoginButton theme={theme}>Login</St.LoginButton>
             </St.Link>
           </>
         ) : (

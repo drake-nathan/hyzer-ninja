@@ -7,8 +7,8 @@ import { ThemeContext, LoginContext } from '../../contexts/contextIndex';
 import * as St from './Form.styled';
 
 const loginSchema = yup.object({
-  username: yup.string(),
-  password: yup.string(),
+  username: yup.string().required(),
+  password: yup.string().required(),
 });
 
 type FormTypes = yup.InferType<typeof loginSchema>;
@@ -23,13 +23,14 @@ const LoginForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormTypes> = () => {
     setIsLoggedIn(true);
-    navigate(-1);
+    localStorage.setItem('userId', '1');
+    navigate('/');
   };
 
   return (
     <St.Container>
       <St.Form onSubmit={handleSubmit(onSubmit)}>
-        <St.Label>Username</St.Label>
+        <St.Label>Email or Username</St.Label>
         <St.Input {...register('username')} theme={theme} />
         <St.Label>Password</St.Label>
         <St.Input {...register('password')} theme={theme} type="password" />

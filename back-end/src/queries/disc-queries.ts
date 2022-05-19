@@ -39,6 +39,26 @@ export const getSingleDisc = async (req: Request, res: Response) => {
   }
 };
 
+export const getUserDiscs = async (req: Request, res: Response) => {
+  try {
+    const client = await pool.connect();
+    const { userId } = req.params;
+
+    const sql = `
+      SELECT *
+      FROM discs
+      WHERE user_id = ${userId};
+    `;
+    const { rows } = await client.query(sql);
+
+    client.release();
+
+    res.send(rows);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+};
+
 interface DiscRequest extends Request {
   body: IDiscTypesJS;
 }
@@ -51,8 +71,8 @@ export const addDisc = async (req: DiscRequest, res: Response) => {
     const sql = `
       INSERT INTO discs (title, brand, type, mold, base_plastic, sub_plastic, run, condition, price, image_url, user_id)
       VALUES ('${disc.title}', '${disc.brand}', '${disc.type}', '${disc.mold}', 
-        '${disc.basePlastic}', '${disc.subPlastic || 'NULL'}', 
-        '${disc.run || 'NULL'}', ${disc.condition}, ${disc.price}, 
+        '${disc.basePlastic}', '${disc.subPlastic || ''}', 
+        '${disc.run || ''}', ${disc.condition}, ${disc.price}, 
         '${disc.imageUrl}', ${disc.userId})
       RETURNING disc_id;
     `;
