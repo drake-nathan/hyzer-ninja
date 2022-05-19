@@ -1,12 +1,11 @@
 import axios from 'axios';
 import { IDiscTypesDB, IDiscTypesJS } from '../types/typesindex';
 
-// const url = process.env.REACT_APP_BACKEND_URL as string;
-const url = 'http://localhost:8080';
+const ROOT_URL = process.env.REACT_APP_BACKEND_URL as string;
 
 export const fetchDiscs = async () => {
   try {
-    const response = await axios.get<IDiscTypesDB[]>(`${url}/api/discs`);
+    const response = await axios.get<IDiscTypesDB[]>(`${ROOT_URL}/api/discs`);
     return response;
   } catch (error) {
     console.error(error);
@@ -16,7 +15,7 @@ export const fetchDiscs = async () => {
 export const fetchSingleDisc = async (discId: string) => {
   try {
     const response = await axios.get<IDiscTypesDB>(
-      `${url}/api/discs/${discId}`
+      `${ROOT_URL}/api/discs/${discId}`
     );
     return response;
   } catch (error) {
@@ -26,7 +25,10 @@ export const fetchSingleDisc = async (discId: string) => {
 
 export const addDisc = async (disc: IDiscTypesJS) => {
   try {
-    const response = await axios.post<IDiscTypesDB>(`${url}/api/discs/`, disc);
+    const response = await axios.post<IDiscTypesDB>(
+      `${ROOT_URL}/api/discs/`,
+      disc
+    );
     const newDiscId = response.data.disc_id;
     const { status } = response;
     return { status, newDiscId };
@@ -38,7 +40,7 @@ export const addDisc = async (disc: IDiscTypesJS) => {
 
 export const deleteDisc = async (discId: string) => {
   try {
-    const response = await axios.delete(`${url}/api/discs/${discId}`);
+    const response = await axios.delete(`${ROOT_URL}/api/discs/${discId}`);
     const { status } = response;
     return status;
   } catch (error) {
