@@ -51,8 +51,8 @@ export const addDisc = async (req: DiscRequest, res: Response) => {
     const sql = `
       INSERT INTO discs (title, brand, type, mold, base_plastic, sub_plastic, run, condition, price, image_url, user_id)
       VALUES ('${disc.title}', '${disc.brand}', '${disc.type}', '${disc.mold}', 
-        '${disc.basePlastic}', '${disc.subPlastic || undefined}', 
-        '${disc.run || undefined}', ${disc.condition}, ${disc.price}, 
+        '${disc.basePlastic}', '${disc.subPlastic || 'NULL'}', 
+        '${disc.run || 'NULL'}', ${disc.condition}, ${disc.price}, 
         '${disc.imageUrl}', ${disc.userId})
       RETURNING disc_id;
     `;
@@ -102,8 +102,8 @@ export const updateDisc = async (req: DiscRequest, res: Response) => {
         type = '${disc.type}', 
         mold = '${disc.mold}', 
         base_plastic = '${disc.basePlastic}', 
-        sub_plastic = '${disc.subPlastic || undefined}', 
-        run = '${disc.run || undefined}', 
+        sub_plastic = '${disc.subPlastic || 'NULL'}', 
+        run = '${disc.run || 'NULL'}', 
         condition = ${disc.condition}, 
         price = ${disc.price}, 
         image_url = '${disc.imageUrl}'    

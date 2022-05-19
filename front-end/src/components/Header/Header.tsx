@@ -7,7 +7,7 @@ import { ThemeContext, NavOpenContext } from '../../contexts/contextIndex';
 import useWindowWidth from '../../hooks/windowHook';
 import NavMobile from './NavMobile';
 import NavFull from './NavFull';
-import * as HeaderStyles from './Header.styled';
+import * as St from './Header.styled';
 
 interface Props {
   toggleDarkMode: () => void;
@@ -26,20 +26,15 @@ const Header: React.FC<Props> = ({ toggleDarkMode }) => {
 
   return (
     <NavOpenContext.Provider value={isNavOpen}>
-      <HeaderStyles.Container>
-        <HeaderStyles.TitleDiv>
+      <St.Container>
+        <St.TitleDiv>
           <Link to="/">
-            <HeaderStyles.NinjaImg
-              className="svg-color"
-              src="/favpng_ninja-icon.png"
-            />
+            <St.NinjaImg className="svg-color" src="/favpng_ninja-icon.png" />
           </Link>
-          <HeaderStyles.Title isMobile={navBreakPoint}>
-            Hyzer Ninja
-          </HeaderStyles.Title>
-        </HeaderStyles.TitleDiv>
-        <HeaderStyles.RightSideDiv>
-          <HeaderStyles.DarkModeDiv color={colorTextOffset}>
+          <St.Title isMobile={navBreakPoint}>Hyzer Ninja</St.Title>
+        </St.TitleDiv>
+        <St.RightSideDiv>
+          <St.DarkModeDiv color={colorTextOffset}>
             {isDarkMode ? (
               <LightModeIcon
                 sx={{ fontSize: iconSize }}
@@ -51,17 +46,17 @@ const Header: React.FC<Props> = ({ toggleDarkMode }) => {
                 onClick={toggleDarkMode}
               />
             )}
-          </HeaderStyles.DarkModeDiv>
-          <HeaderStyles.HamburgerDiv>
+          </St.DarkModeDiv>
+          <St.HamburgerDiv>
             {navBreakPoint ? (
               <Hamburger toggled={isNavOpen} toggle={setIsNavOpen} />
             ) : (
               <NavFull />
             )}
-          </HeaderStyles.HamburgerDiv>
-        </HeaderStyles.RightSideDiv>
+          </St.HamburgerDiv>
+        </St.RightSideDiv>
         {isNavOpen && <NavMobile setIsNavOpen={setIsNavOpen} />}
-      </HeaderStyles.Container>
+      </St.Container>
     </NavOpenContext.Provider>
   );
 };
