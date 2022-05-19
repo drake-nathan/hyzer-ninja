@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button } from '../Main.styled';
+import { ThemeType, Button } from '../Main.styled';
 
 type Props = { color: string };
 
@@ -8,13 +8,17 @@ export const DiscDetailContainer = styled.div`
   margin: 0 auto;
 
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   gap: 1.5em;
   padding: 1.5em;
 `;
 
 export const ImgDiv = styled.div`
-  /* max-width: 50%; */
+  min-width: 275px;
+
+  @media (min-width: 800px) {
+    max-width: 60%;
+  }
 `;
 
 export const DiscImg = styled.img<Props>`
@@ -26,10 +30,21 @@ export const DiscImg = styled.img<Props>`
 
 export const DescriptionDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  @media (min-width: 800px) {
+    max-width: 40%;
+  }
+`;
+
+export const TextDiv = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 50%;
 `;
+
+export const ButtonDiv = styled.div``;
 
 export const Title = styled.h3<Props>`
   text-align: center;
@@ -49,4 +64,44 @@ export const Text = styled.li`
   margin-bottom: 0.5em;
 `;
 
-export const EditButton = styled(Button)``;
+export const EditButton = styled(Button)`
+  margin: 0.5em;
+`;
+
+export const DeleteButton = styled(Button)`
+  margin: 0.5em;
+`;
+
+export const BuyButton = styled(Button)`
+  margin: 0.5em;
+`;
+
+export const DeleteModal = styled.div<ThemeType>`
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+
+  @media (min-width: 500px) {
+    bottom: 20%;
+    right: 9%;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: ${(props) => props.theme.colorBg};
+  color: ${(props) => props.theme.colorText};
+  border: 1px solid gray;
+  border-radius: 10px;
+
+  padding: 1em;
+`;
+
+export const ModalText = styled.span`
+  margin: 0.5em 0.5em 1em 0.5em;
+`;
+
+export const ModalButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;

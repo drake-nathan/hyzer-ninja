@@ -4,7 +4,7 @@ import React, { useContext, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import NavContent from './NavContent';
-import * as NavStyles from './Nav.styled';
+import * as St from './Nav.styled';
 
 interface Props {
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,9 +22,9 @@ const NavMobile: React.FC<Props> = ({ setIsNavOpen }) => {
 
   return createPortal(
     <div className="portal" ref={portalRef} onClick={closeNav}>
-      <NavStyles.MobileContainer theme={theme}>
+      <St.MobileContainer theme={theme}>
         <NavContent />
-      </NavStyles.MobileContainer>
+      </St.MobileContainer>
     </div>,
     document.getElementById('portal') as HTMLDivElement
   );

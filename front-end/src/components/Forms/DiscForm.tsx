@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { MenuItem } from '@mui/material';
@@ -26,6 +26,10 @@ const discSchema = yup.object({
 
 type FormTypes = yup.InferType<typeof discSchema>;
 
+interface ILocationType {
+  disc: IDiscTypesJS;
+}
+
 const DiscForm: React.FC = () => {
   const [discType, setDiscType] = useState('');
   const [newDisc, setNewDisc] = useState<IDiscTypesJS>({
@@ -34,11 +38,10 @@ const DiscForm: React.FC = () => {
     type: '',
     mold: '',
     basePlastic: '',
-    subPlastic: '',
-    run: '',
     condition: 0,
     price: 0,
     imageUrl: '',
+    userId: 1,
   });
 
   const navigate = useNavigate();
@@ -46,6 +49,14 @@ const DiscForm: React.FC = () => {
   const { register, handleSubmit } = useForm<FormTypes>({
     resolver: yupResolver(discSchema),
   });
+
+  // const location = useLocation();
+  // const { disc } = location.state as ILocationType;
+  // useEffect(() => {
+  //   if (disc) {
+  //     setNewDisc({ ...disc });
+  //   }
+  // }, [disc]);
 
   const handleDiscTypeChange = (e: SelectChangeEvent) => {
     setDiscType(e.target.value);
@@ -73,9 +84,13 @@ const DiscForm: React.FC = () => {
     }));
   };
 
-  const onSubmit: SubmitHandler<FormTypes> = () => {
-    addDisc(newDisc);
-    console.log(newDisc);
+  const onSubmit: SubmitHandler<FormTypes> = async () => {
+    const { status, newDiscId } = await addDisc(newDisc);
+    if (status === 200) {
+      navigate(`/disc/${newDiscId as number}`);
+    } else {
+      alert('Disc could not be added');
+    }
   };
 
   return (
@@ -87,6 +102,7 @@ const DiscForm: React.FC = () => {
             {...register('title')}
             theme={theme}
             placeholder="Title"
+            value={newDisc.title}
             onChange={(e) => handleFormChange(e, 'title')}
           />
           <St.Label>Brand:</St.Label>
@@ -159,9 +175,8 @@ const DiscForm: React.FC = () => {
             placeholder="Whole dollars including shipping"
             onChange={(e) => handleFormChange(e, 'price')}
           />
-          <St.Label>Image:</St.Label>
+          <St.Label>Image URL:</St.Label>
           <St.Input
-            type="file"
             {...register('imageUrl')}
             theme={theme}
             onChange={(e) => handleFormChange(e, 'imageUrl')}

@@ -48,7 +48,7 @@ const App = () => {
               <Route path="/register" element={<RegisterForm />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/disc/:id" element={<DiscDetailPage />} />
-              <Route path="/newdisc" element={<DiscForm />} />
+              <Route path="/discform" element={<DiscForm />} />
               <Route path="/" element={<DiscList />} />
             </Routes>
           </St.MainContainer>

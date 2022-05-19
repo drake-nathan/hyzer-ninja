@@ -10,6 +10,7 @@ export interface IDiscTypesDB {
   condition: number;
   price: number;
   image_url: string;
+  user_id: number;
 }
 
 export interface IDiscTypesJS {
@@ -23,4 +24,5 @@ export interface IDiscTypesJS {
   condition: number;
   price: number;
   imageUrl: string;
+  userId: number;
 }

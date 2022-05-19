@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Request, Response } from 'express';
-import { DiscTypes } from '../types/typesIndex';
+import { IDiscTypesJS } from '../types/typesIndex';
 import { pool } from '../dbconfig/db-connector';
 
 export const getDiscs = async (req: Request, res: Response) => {
@@ -40,7 +40,7 @@ export const getSingleDisc = async (req: Request, res: Response) => {
 };
 
 interface DiscRequest extends Request {
-  body: DiscTypes;
+  body: IDiscTypesJS;
 }
 
 export const addDisc = async (req: DiscRequest, res: Response) => {
@@ -49,11 +49,11 @@ export const addDisc = async (req: DiscRequest, res: Response) => {
     const disc = req.body;
 
     const sql = `
-      INSERT INTO discs (title, brand, type, mold, base_plastic, sub_plastic, run, condition, price, image_url)
+      INSERT INTO discs (title, brand, type, mold, base_plastic, sub_plastic, run, condition, price, image_url, user_id)
       VALUES ('${disc.title}', '${disc.brand}', '${disc.type}', '${disc.mold}', 
         '${disc.basePlastic}', '${disc.subPlastic || undefined}', 
         '${disc.run || undefined}', ${disc.condition}, ${disc.price}, 
-        '${disc.imageUrl}')
+        '${disc.imageUrl}', ${disc.userId})
       RETURNING disc_id;
     `;
 

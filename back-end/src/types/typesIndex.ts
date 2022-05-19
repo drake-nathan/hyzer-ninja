@@ -1,5 +1,5 @@
-export interface DiscTypes {
-  disc_id: number;
+export interface IDiscTypesJS {
+  discId: number;
   title: string;
   brand: string;
   type: string;
@@ -10,4 +10,5 @@ export interface DiscTypes {
   condition: number;
   price: number;
   imageUrl: string;
+  userId: number;
 }

@@ -54,7 +54,17 @@ const setupDevDb = async (req: Request, res: Response) => {
     INSERT INTO discs (title, brand, type, mold, base_plastic, sub_plastic, run, condition, price, image_url, user_id)
       VALUES ${discs.map(
         (disc) =>
-          `('${disc.title}', '${disc.brand}', '${disc.type}', '${disc.mold}', '${disc.basePlastic}', '${disc.subPlastic}', '${disc.run}', ${disc.condition}, ${disc.price}, '${disc.image}', 1)`
+          `('${disc.title}', 
+          '${disc.brand}', 
+          '${disc.type}', 
+          '${disc.mold}', 
+          '${disc.basePlastic}', 
+          '${disc.subPlastic || null}', 
+          '${disc.run || null}', 
+          ${disc.condition}, 
+          ${disc.price}, 
+          '${disc.image}', 
+          1)`
       )};
   `;
 

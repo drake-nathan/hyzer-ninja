@@ -17,14 +17,14 @@ const NavContent: React.FC = () => {
     <>
       <St.Item>
         <SellIcon />
-        <St.Link href="/newdisc">
-          <St.Text theme={theme}>Sell</St.Text>
+        <St.Link href="/discform">
+          <St.Text theme={theme}>Sell a Disc</St.Text>
         </St.Link>
       </St.Item>
 
       <St.Item>
         <LightbulbIcon />
-        <St.Link href="#">
+        <St.Link href="mailto: nathandrakedrums@gmail.com">
           <St.Text theme={theme}>Request Features</St.Text>
         </St.Link>
       </St.Item>

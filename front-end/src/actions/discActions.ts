@@ -26,9 +26,23 @@ export const fetchSingleDisc = async (discId: string) => {
 
 export const addDisc = async (disc: IDiscTypesJS) => {
   try {
-    const response = await axios.post<IDiscTypesJS>(`${url}/api/discs/`, disc);
-    console.log(response);
+    const response = await axios.post<IDiscTypesDB>(`${url}/api/discs/`, disc);
+    const newDiscId = response.data.disc_id;
+    const { status } = response;
+    return { status, newDiscId };
   } catch (error) {
     console.error(error);
+    return { status: 400 };
+  }
+};
+
+export const deleteDisc = async (discId: string) => {
+  try {
+    const response = await axios.delete(`${url}/api/discs/${discId}`);
+    const { status } = response;
+    return status;
+  } catch (error) {
+    console.error(error);
+    return { status: 400 };
   }
 };
