@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/src/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "prestart": "npm run build",
     "start": "nodemon src/server.js",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/server.ts",
