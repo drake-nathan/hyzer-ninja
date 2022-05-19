@@ -28,7 +28,7 @@ const DiscDetailPage = () => {
   return (
     <St.DiscDetailContainer>
       <St.ImgDiv>
-        <St.DiscImg src={disc?.image_url} color={theme.colorTextOffset} />
+        <St.UserImg src={disc?.image_url} color={theme.colorTextOffset} />
       </St.ImgDiv>
       <St.DescriptionDiv>
         <St.TextDiv>

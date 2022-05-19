@@ -44,7 +44,9 @@ const NavContent: React.FC = () => {
             <St.LogoutButton theme={theme} onClick={() => setIsLoggedIn(false)}>
               Logout
             </St.LogoutButton>
-            <St.ProfilePic src="/media/selfie.jpeg" />
+            <St.Link href="/user">
+              <St.ProfilePic src="/media/selfie.jpeg" />
+            </St.Link>
           </>
         )}
       </St.ButtonDiv>

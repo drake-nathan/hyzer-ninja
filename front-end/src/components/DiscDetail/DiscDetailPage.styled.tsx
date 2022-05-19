@@ -21,13 +21,6 @@ export const ImgDiv = styled.div`
   }
 `;
 
-export const DiscImg = styled.img<Props>`
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px ${(props) => props.color};
-`;
-
 export const DescriptionDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -36,6 +29,13 @@ export const DescriptionDiv = styled.div`
   @media (min-width: 800px) {
     max-width: 40%;
   }
+`;
+
+export const UserImg = styled.img<Props>`
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px ${(props) => props.color};
 `;
 
 export const TextDiv = styled.div`

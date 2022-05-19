@@ -3,12 +3,23 @@ import { IDiscTypesDB, IDiscTypesJS } from '../types/typesindex';
 
 const ROOT_URL = process.env.REACT_APP_BACKEND_URL as string;
 
-export const fetchDiscs = async () => {
-  try {
-    const response = await axios.get<IDiscTypesDB[]>(`${ROOT_URL}/api/discs`);
-    return response;
-  } catch (error) {
-    console.error(error);
+export const fetchDiscs = async (userId: number) => {
+  if (userId) {
+    try {
+      const response = await axios.get<IDiscTypesDB[]>(
+        `${ROOT_URL}/api/discs/userdiscs/${userId}`
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    try {
+      const response = await axios.get<IDiscTypesDB[]>(`${ROOT_URL}/api/discs`);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
 

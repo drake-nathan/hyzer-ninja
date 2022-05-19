@@ -12,6 +12,7 @@ import DiscDetailPage from './components/DiscDetail/DiscDetailPage';
 import RegisterForm from './components/Forms/RegisterForm';
 import LoginForm from './components/Forms/LoginForm';
 import DiscForm from './components/Forms/DiscForm';
+import UserPage from './components/UserPage/UserPage';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,6 +20,12 @@ const App = () => {
     () => ({ isLoggedIn, setIsLoggedIn }),
     [isLoggedIn, setIsLoggedIn]
   );
+
+  const userId = localStorage.getItem('userId');
+
+  useEffect(() => {
+    if (userId) setIsLoggedIn(true);
+  }, [userId]);
 
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const defaultTheme = prefersDark ? themes.dark : themes.light;
@@ -47,9 +54,10 @@ const App = () => {
               <Route path="/home" element={<Home />} />
               <Route path="/register" element={<RegisterForm />} />
               <Route path="/login" element={<LoginForm />} />
+              <Route path="/user" element={<UserPage />} />
               <Route path="/disc/:id" element={<DiscDetailPage />} />
               <Route path="/discform" element={<DiscForm />} />
-              <Route path="/" element={<DiscList />} />
+              <Route path="/" element={<DiscList userId={0} />} />
             </Routes>
           </St.MainContainer>
           <Footer />

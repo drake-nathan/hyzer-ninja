@@ -6,11 +6,15 @@ import { DiscListDiv } from './DiscList.styled';
 import { fetchDiscs } from '../../actions/actionsIndex';
 import { IDiscTypesDB } from '../../types/typesindex';
 
-const DiscList: React.FC = () => {
+interface Props {
+  userId: number;
+}
+
+const DiscList: React.FC<Props> = ({ userId }) => {
   const [discs, setDiscs] = useState<IDiscTypesDB[]>();
 
   useEffect(() => {
-    fetchDiscs().then((res) => setDiscs(res?.data));
+    fetchDiscs(userId).then((res) => setDiscs(res?.data));
   }, []);
 
   return (
