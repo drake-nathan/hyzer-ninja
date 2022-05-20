@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../contexts/contextIndex';
 import DiscList from '../DiscList/DiscList';

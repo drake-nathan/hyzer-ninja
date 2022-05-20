@@ -63,3 +63,23 @@ export const CustomSlider = styled(Slider)<ThemeType>`
 `;
 
 export const SubmitButton = styled(Button)``;
+
+export const SignupDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1em;
+`;
+
+export const Text = styled.span`
+  font-size: 1.125rem;
+  margin: 1em 0.5em;
+`;
+
+export const SignupButton = styled(Button)`
+  font-size: 1.125rem;
+  padding: 0.375em;
+`;
+
+export const Link = styled.a``;

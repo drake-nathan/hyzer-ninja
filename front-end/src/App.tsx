@@ -52,7 +52,7 @@ const App = () => {
           <St.MainContainer>
             <Routes>
               <Route path="/home" element={<Home />} />
-              <Route path="/register" element={<RegisterForm />} />
+              <Route path="/signup" element={<RegisterForm />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/user" element={<UserPage />} />
               <Route path="/disc/:id" element={<DiscDetailPage />} />

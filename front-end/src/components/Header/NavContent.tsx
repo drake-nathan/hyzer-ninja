@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SellIcon from '@mui/icons-material/SellOutlined';
 import LightbulbIcon from '@mui/icons-material/LightbulbOutlined';
 import {
@@ -9,6 +10,7 @@ import {
 import * as St from './Nav.styled';
 
 const NavContent: React.FC = () => {
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const isNavOpen = useContext(NavOpenContext);
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
@@ -16,6 +18,7 @@ const NavContent: React.FC = () => {
   const handleLogoutClick = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('userId');
+    navigate('/');
   };
 
   return (
@@ -37,7 +40,7 @@ const NavContent: React.FC = () => {
       <St.ButtonDiv isNavOpen={isNavOpen}>
         {!isLoggedIn ? (
           <>
-            <St.Link href="/register">
+            <St.Link href="/signup">
               <St.SignUpButton theme={theme}>Sign Up</St.SignUpButton>
             </St.Link>
             <St.Link href="/login">

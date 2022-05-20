@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
   const onSubmit: SubmitHandler<FormTypes> = () => {
     setIsLoggedIn(true);
     localStorage.setItem('userId', '1');
-    navigate('/');
+    navigate('/user');
   };
 
   return (
@@ -38,6 +38,12 @@ const LoginForm: React.FC = () => {
           Login
         </St.SubmitButton>
       </St.Form>
+      <St.SignupDiv>
+        <St.Text>No Account? Sign up here:</St.Text>
+        <St.Link href="/signup">
+          <St.SignupButton theme={theme}>Sign Up</St.SignupButton>
+        </St.Link>
+      </St.SignupDiv>
     </St.Container>
   );
 };

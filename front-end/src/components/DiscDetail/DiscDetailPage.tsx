@@ -1,11 +1,12 @@
-import { useContext, useState, useEffect } from 'react';
+/* eslint-disable react/jsx-no-useless-fragment */
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ThemeContext, LoginContext } from '../../contexts/contextIndex';
 import { fetchSingleDisc, deleteDisc } from '../../actions/actionsIndex';
 import { IDiscTypesDB } from '../../types/typesindex';
 import * as St from './DiscDetailPage.styled';
 
-const DiscDetailPage = () => {
+const DiscDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
 
@@ -16,6 +17,7 @@ const DiscDetailPage = () => {
   const { id: discId } = useParams();
   const [disc, setDisc] = useState<IDiscTypesDB>();
   const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [isBuyModal, setIsBuyModal] = useState(false);
 
   useEffect(() => {
     fetchSingleDisc(discId as string).then((res) => setDisc(res?.data));
@@ -59,18 +61,31 @@ const DiscDetailPage = () => {
           <St.ButtonDiv>
             {isDiscMine ? (
               <>
-                <Link to="/discform" state={{ disc }}>
-                  <St.EditButton theme={theme}>Edit</St.EditButton>
+                <Link to="/discform" state={{ disc, isEditForm: true }}>
+                  <St.DiscButton theme={theme}>Edit</St.DiscButton>
                 </Link>
-                <St.DeleteButton
+                <St.DiscButton
                   theme={theme}
                   onClick={() => setIsDeleteModal(!isDeleteModal)}
                 >
                   Delete
-                </St.DeleteButton>
+                </St.DiscButton>
               </>
             ) : (
-              <St.BuyButton theme={theme}>Buy Now</St.BuyButton>
+              <>
+                {isLoggedIn ? (
+                  <St.DiscButton
+                    theme={theme}
+                    onClick={() => setIsBuyModal(!isBuyModal)}
+                  >
+                    Buy Now
+                  </St.DiscButton>
+                ) : (
+                  <St.Link href="/login">
+                    <St.DiscButton theme={theme}>Buy Now</St.DiscButton>
+                  </St.Link>
+                )}
+              </>
             )}
           </St.ButtonDiv>
         </St.TextDiv>
@@ -79,20 +94,30 @@ const DiscDetailPage = () => {
         <St.DeleteModal theme={theme}>
           <St.ModalText>Are you sure you want to delete this?</St.ModalText>
           <St.ModalButtonDiv>
-            <St.DeleteButton
+            <St.ModalButton
               theme={theme}
               onClick={() => handleDiscDelete(discId as string)}
             >
               Delete that shiz
-            </St.DeleteButton>
-            <St.DeleteButton
+            </St.ModalButton>
+            <St.ModalButton
               theme={theme}
               onClick={() => setIsDeleteModal(false)}
             >
               Nooooooo
-            </St.DeleteButton>
+            </St.ModalButton>
           </St.ModalButtonDiv>
         </St.DeleteModal>
+      )}
+      {isBuyModal && (
+        <St.BuyModal theme={theme}>
+          <St.ModalText>
+            To buy this disc, ninja some cash to the seller on Paypal.
+          </St.ModalText>
+          <St.ModalText>
+            Send ${disc?.price} to pleasepayme@hyzer.ninja
+          </St.ModalText>
+        </St.BuyModal>
       )}
     </St.DiscDetailContainer>
   );

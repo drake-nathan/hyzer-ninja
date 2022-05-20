@@ -52,7 +52,7 @@ export const Title = styled.h3<Props>`
   font-size: 1.75rem;
   line-height: 1.3;
   letter-spacing: 1.3px;
-  border-bottom: 1px solid ${(props) => props.color};
+  border-bottom: 1px solid gray;
 `;
 
 export const List = styled.ul`
@@ -60,19 +60,12 @@ export const List = styled.ul`
 `;
 
 export const Text = styled.li`
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   margin-bottom: 0.5em;
 `;
 
-export const EditButton = styled(Button)`
-  margin: 0.5em;
-`;
-
-export const DeleteButton = styled(Button)`
-  margin: 0.5em;
-`;
-
-export const BuyButton = styled(Button)`
+export const DiscButton = styled(Button)`
+  font-size: 1.25rem;
   margin: 0.5em;
 `;
 
@@ -104,4 +97,24 @@ export const ModalText = styled.span`
 export const ModalButtonDiv = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const ModalButton = styled(Button)`
+  /* font-size: 1.25rem; */
+  margin: 0.5em;
+`;
+
+export const Link = styled.a``;
+
+export const BuyModal = styled(DeleteModal)`
+  margin: 0.5em;
+  max-width: 300px;
+
+  @media (min-width: 500px) {
+    bottom: 10%;
+    right: 9%;
+  }
+
+  font-size: 1.25rem;
+  letter-spacing: 1px;
 `;

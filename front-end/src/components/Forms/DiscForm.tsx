@@ -52,6 +52,7 @@ const DiscForm: React.FC = () => {
 
   // const location = useLocation();
   // const { disc } = location.state as ILocationType;
+
   // useEffect(() => {
   //   if (disc) {
   //     setNewDisc({ ...disc });
