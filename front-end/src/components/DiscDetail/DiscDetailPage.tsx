@@ -1,13 +1,18 @@
 import { useContext, useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext, LoginContext } from '../../contexts/contextIndex';
 import { fetchSingleDisc, deleteDisc } from '../../actions/actionsIndex';
 import { IDiscTypesDB } from '../../types/typesindex';
 import * as St from './DiscDetailPage.styled';
 
 const DiscDetailPage = () => {
-  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
+
+  const { isLoggedIn } = useContext(LoginContext);
+  const userId = localStorage.getItem('userId') as string;
+  const [isDiscMine, setIsDiscMine] = useState(false);
+
   const { id: discId } = useParams();
   const [disc, setDisc] = useState<IDiscTypesDB>();
   const [isDeleteModal, setIsDeleteModal] = useState(false);
@@ -15,6 +20,14 @@ const DiscDetailPage = () => {
   useEffect(() => {
     fetchSingleDisc(discId as string).then((res) => setDisc(res?.data));
   }, [discId]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      if (disc?.user_id === parseInt(userId)) {
+        setIsDiscMine(true);
+      }
+    }
+  }, [isLoggedIn, userId, disc?.user_id]);
 
   const handleDiscDelete = async (id: string) => {
     const resultStatus = await deleteDisc(id);
@@ -44,16 +57,21 @@ const DiscDetailPage = () => {
             <St.Text>Price: ${disc?.price}</St.Text>
           </St.List>
           <St.ButtonDiv>
-            <Link to="/discform" state={{ disc }}>
-              <St.EditButton theme={theme}>Edit</St.EditButton>
-            </Link>
-            <St.DeleteButton
-              theme={theme}
-              onClick={() => setIsDeleteModal(!isDeleteModal)}
-            >
-              Delete
-            </St.DeleteButton>
-            <St.BuyButton theme={theme}>Buy Now</St.BuyButton>
+            {isDiscMine ? (
+              <>
+                <Link to="/discform" state={{ disc }}>
+                  <St.EditButton theme={theme}>Edit</St.EditButton>
+                </Link>
+                <St.DeleteButton
+                  theme={theme}
+                  onClick={() => setIsDeleteModal(!isDeleteModal)}
+                >
+                  Delete
+                </St.DeleteButton>
+              </>
+            ) : (
+              <St.BuyButton theme={theme}>Buy Now</St.BuyButton>
+            )}
           </St.ButtonDiv>
         </St.TextDiv>
       </St.DescriptionDiv>

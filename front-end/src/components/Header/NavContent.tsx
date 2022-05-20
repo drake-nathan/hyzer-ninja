@@ -13,6 +13,11 @@ const NavContent: React.FC = () => {
   const isNavOpen = useContext(NavOpenContext);
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
 
+  const handleLogoutClick = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('userId');
+  };
+
   return (
     <>
       <St.Item>
@@ -41,7 +46,7 @@ const NavContent: React.FC = () => {
           </>
         ) : (
           <>
-            <St.LogoutButton theme={theme} onClick={() => setIsLoggedIn(false)}>
+            <St.LogoutButton theme={theme} onClick={handleLogoutClick}>
               Logout
             </St.LogoutButton>
             <St.Link href="/user">

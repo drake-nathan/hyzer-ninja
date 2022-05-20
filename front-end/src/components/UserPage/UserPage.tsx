@@ -17,8 +17,8 @@ const UserPage: React.FC = () => {
           <St.TextDiv>
             <St.Title theme={theme}>discgolf4lyfe88</St.Title>
             <St.List>
-              <St.Text>Email: nathan@hyzerninja.com</St.Text>
-              <St.Text>Paypal: pleasepayme@hyzerninja.com</St.Text>
+              <St.Text>Email: nathan@hyzer.ninja</St.Text>
+              <St.Text>Paypal: pleasepayme@hyzer.ninja</St.Text>
             </St.List>
           </St.TextDiv>
         </St.DescriptionDiv>
